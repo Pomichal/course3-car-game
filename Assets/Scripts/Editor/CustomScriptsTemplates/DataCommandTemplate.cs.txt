@@ -1,0 +1,7 @@
+public class #SCRIPTNAME# : IDataCommand<T>
+{
+    public void Execute(T data)
+    {
+	//CHANGE THE T VALUES INTO REAL VALUES
+    }
+}

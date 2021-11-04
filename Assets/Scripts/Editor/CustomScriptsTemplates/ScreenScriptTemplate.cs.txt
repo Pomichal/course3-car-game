@@ -1,0 +1,19 @@
+using System.Collections.Generic;
+
+public class #SCRIPTNAME# : ScreenBase
+{
+    public override void Show()
+    {
+        base.Show();
+    }
+
+    public override void Show(Dictionary<string, object> parameter=null)
+    {
+        base.Show(parameter);
+    }
+
+    public override void Hide()
+    {
+        base.Hide();
+    }
+}
