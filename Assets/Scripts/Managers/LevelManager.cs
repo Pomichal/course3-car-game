@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Commands;
 using UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -32,10 +33,12 @@ namespace Managers
                     {
                         {"time", elapsedTime }
                     });
+            App.screenManager?.Hide<InGameScreen>();
         }
 
         public void StartGame()
         {
+            App.screenManager?.Show<InGameScreen>();
             startTime = DateTime.Now;
             onStart.Invoke();
         }
