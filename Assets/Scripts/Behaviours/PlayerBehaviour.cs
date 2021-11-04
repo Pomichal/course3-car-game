@@ -18,6 +18,11 @@ public class PlayerBehaviour : MonoBehaviour
     public float maxSteeringAngle;
     public float maxBreakForce;
 
+    public void Start()
+    {
+        App.levelManager.onFinalReached.AddListener(DestroyAfterWin);
+    }
+
     // finds the corresponding visual wheel
     // correctly applies the transform
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
@@ -56,5 +61,20 @@ public class PlayerBehaviour : MonoBehaviour
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Checkpoint"))
+        {
+            var script = other.GetComponent<CheckpointBehaviour>();
+            script?.SetChecked();
+        }
+    }
+
+    public void DestroyAfterWin()
+    {
+        App.levelManager.onFinalReached.RemoveListener(DestroyAfterWin);
+        Destroy(gameObject);
     }
 }
